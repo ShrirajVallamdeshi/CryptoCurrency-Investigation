@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three Buttons</title>
+<style>
+  
+    body {
+        background-color: #979797c5; /* Background color with alpha channel */
+    }
+   
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("C:\\Users\\admin\\Downloads\\wp2406616.jpg"); /* Background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+  }
+  .container {
+    text-align: center;
+  }
+  input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    width: 270px;
+    margin-bottom: 10px; /* Adjusted margin to separate input and combobox */
+  }
+  select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 180px;
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #505157;
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #000000;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" id="addressInput" placeholder="Enter address..."> <!-- Changed input name to "addressInput" -->
+    <input type="text" id="urlInput" placeholder="Enter URL..."> <!-- Renamed input field to "urlInput" -->
+    <select id="crypto_name"> <!-- Changed select id to "crypto_name" -->
+      <option value="Bitcoin">Bitcoin</option>
+      <option value="Ethereum">Ethereum</option>
+      <option value="Litecoin">Litecoin</option>
+      <option value="Monero">Monero</option>
+    </select>
+    <button id="addButton">Add</button>
+    <p id="message"></p> <!-- Added paragraph element for displaying message -->
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyCvDZnY3IWdEbI881SO9Nk619kZCOJMql0",
+    authDomain: "address-5c3a1.firebaseapp.com",
+    projectId: "address-5c3a1",
+    storageBucket: "address-5c3a1.appspot.com",
+    messagingSenderId: "238292252377",
+    appId: "1:238292252377:web:e8bb41123a622ae42db0c8"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    document.getElementById("addButton").addEventListener('click', function(e) {
+      const address = document.getElementById("addressInput").value; // Changed variable name to "address"
+      const url = document.getElementById("urlInput").value;
+      const crypto = document.getElementById("crypto_name").value; // Changed variable name to "crypto_name"
+      const data = {
+        addressInput: address, // Changed key name to "addressInput"
+        urlInput: url,
+        crypto_name: crypto // Changed key name to "crypto_name"
+      };
+      db.ref('data').push(data);
+      // alert("Data added to Firebase: " + JSON.stringify(data));
+      document.getElementById("message").innerText = "Data added to Firebase"; // Display message on webpage
+    });
+  </script>
+  <button id="backButton" onclick="goBack()">Back</button>
+    <style>
+#backButton {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    align-items: center;
+    background-color: #8A8583;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 148px;
+    height: 50px;
+    padding: 3px;
+    text-decoration: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#backButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 15px 30px -5px;
+}
+</style>
+<script>
+    // JavaScript for the back button functionality
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

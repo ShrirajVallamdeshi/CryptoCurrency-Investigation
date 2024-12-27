@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech AI</title>
+    <style>
+        /* Style for header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px; /* Added padding to the top and bottom, increased for readability */
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Aligns items to the start and end of the header */
+            position: sticky; /* Changed from fixed to sticky */
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure header stays on top of other elements */
+            height: 40px;
+            
+        }
+
+        /* Style for logo image */
+        .logo-container {
+            display: flex; /* Nested flexbox container */
+            align-items: center; /* Align items vertically */
+        }
+
+        .logo {
+            width: 38px; /* Increased size */
+            height: 38px; /* Increased size */
+            border-radius: 50%; /* To make it a circle */
+            margin-right: 20px; /* Add space between logo and title */
+        }
+
+        /* Style for title */
+        h1 {
+            margin-right: 20px; /* Add space between logo and title */
+            font-size: 2em;
+        }
+       
+
+        /* Style for navigation */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: right; /* Aligns navigation to the right */
+            margin-right: 80px; /* Add some gap on the right side */
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 10px; /* Adjusted margin */
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Style for sections */
+        section {
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .section-content {
+            text-align: center;
+        }
+
+        .section-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .tools-container {
+            margin-top: 20px;
+        }
+
+        .tool-btn {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style for footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px; /* Added padding to the top and bottom, increased for readability */
+            display: flex;
+            justify-content: space-between; /* Aligns items to the start and end of the footer */
+            
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1; /* Place the footer at the bottom */
+        }
+
+        /* Style for scrollbar */
+        body {
+            overflow-y: scroll; /* Add scrollbar to vertical axis */
+        }
+
+        /* Add space between sections */
+        section:not(:first-of-type) {
+            margin-top: 20px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-y: scroll; /* Add vertical scrollbar */
+        }
+        
+        #page2-title {
+            font-family: "Arial", sans-serif; /* Replace with desired professional font */
+            color: white;
+            font-size: 7em; /* Increased font size */
+            margin-bottom: 20px;
+            text-align: center;
+            animation: fade-in 1s ease-in-out; /* Add animation */
+            position: absolute; /* Position the title */
+            top: 50%; /* Move it to the middle vertically */
+            left: 50%; /* Move it to the middle horizontally */
+            transform: translate(-50%, -50%); /* Center it precisely */
+            text-shadow: 0 0 10px white; /* Add a highlighting glow */
+        }
+        #page2-subtitle {
+            font-family: "Arial", sans-serif; /* Replace with desired professional font */
+            color: rgb(255, 255, 255);
+            font-size: 2em; /* Increased font size */
+            margin-bottom: 20px;
+            text-align: center;
+            animation: fade-in 1s ease-in-out; /* Add animation */
+            position: absolute; /* Position the title */
+            top: 70%; /* Move it to the middle vertically */
+            left: 50%; /* Move it to the middle horizontally */
+            transform: translate(-50%, -50%); /* Center it precisely */
+            
+            background-color: rgb(69, 67, 67);
+        }
+
+
+        @keyframes fade-in {
+            0% {
+            opacity: 0;
+            }
+            100% {
+            opacity: 1;
+            }
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 70px;
+            margin-top: 150px;
+            
+            
+        }
+        .card {
+            flex-basis: calc(20% - 20px); /* Adjusted flex-basis to fit 5 cards in a row */
+
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1 >Tech AI</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <section style="height: 100vh; background-image: url('page1.jpg'); background-size: cover;">
+            <div class="section-content">
+                <h2 id="page2-title">Tech AI</h2>
+                <h4 id="page2-subtitle">Cryptocurrency Flow and Investigation</h4>
+                
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Section 1 -->
+    <section></section>
+        <div style="height: 100vh;" class="section-content">
+            <h2>Fraud Detection Techniques
+</h2>
+            <div class="cards-container">
+            <div class="card">
+                <img src="card.jpg" alt="Card 1">
+                <h3>Fraud Detection
+                </h3>
+                <p></p>
+            </div>
+            <div class="card">
+                <img src="card.jpg" alt="Card 2">
+                <h3>Dark Web</h3>
+                <p></p>
+            </div>
+            <div class="card">
+                <img src="card.jpg" alt="Card 3">
+                <h3>Pump and Dump
+                </h3>
+                <p></p>
+            </div>
+            <div class="card">
+                <img src="card.jpg" alt="Card 4">
+                <h3>Suspicious Address
+                </h3>
+                <p></p>
+            </div>
+            </div>
+        </div>
+    </section>
+    
+                
+    </section>
+
+    <!-- Section 2 -->
+    <section ></section>
+        <div style="height: 100vh;"class="section-content">
+            <h2>Investigation Techniques
+            </h2>
+            <div class="cards-container">
+            <div class="card">
+                <img src="card.jpg" alt="Card 1">
+                <h3>Address Details</h3>
+                <p></p>
+            </div>
+            <div class="card">
+                <img src="card.jpg" alt="Card 2">
+                <h3>Visualization</h3>
+                <p></p>
+            </div>
+            <div class="card">
+                <img src="card.jpg" alt="Card 3">
+                <h3>K means clustering
+                </h3>
+                <p></p>
+            </div>
+            <div class="card">
+                <img src="card.jpg" alt="Card 4">
+                <h3>Generate a Report</h3>
+                <p></p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Footer -->
+    <footer>
+        <div>
+            <h2>Footer Title</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>

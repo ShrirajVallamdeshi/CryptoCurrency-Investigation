@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firebase Realtime Database Viewer</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+  
+    body {
+        background-color: #979797c5; /* Background color with alpha channel */
+    }
+   
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("C:\\Users\\admin\\Downloads\\wp2406616.jpg"); /* Background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+  }
+  .container {
+    text-align: center;
+  }
+  input[type="text"] {
+    padding: 5px; /* Reduced padding */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 5px; /* Reduced margin */
+    width: 150px; /* Reduced width */
+    margin-bottom: 5px; /* Adjusted margin to separate input and combobox */
+  }
+  select {
+    padding: 5px; /* Reduced padding */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100px; /* Reduced width */
+    margin-bottom: 5px;
+  }
+  button {
+    padding: 10px 20px; /* Reduced padding */
+    border: none;
+    border-radius: 5px;
+    background-color: #505157;
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #000000;
+  }
+  .table {
+    top: 0; /* Add top margin to the table */
+  }
+  #myTable {
+    position: fixed; /* or absolute */
+    top: 90px;
+    left: 0; /* optional, adjust if necessary */
+    width: 100%; /* optional, adjust if necessary */
+    z-index: 9999; /* optional, adjust if necessary */
+    background-color: #505157; /* optional, adjust if necessary */
+    /* Additional styling as needed */
+  }
+
+  /* Style for the scrollbar */
+  .scrollable-content {
+    overflow-y: auto; /* Add vertical scrollbar */
+    height: 300px; /* Set the height of the container */
+    padding: 10px; /* Add some padding */
+  }
+
+  /* Smaller font size for table headers */
+  .table th {
+    font-size: 20px;
+  }
+
+  /* Smaller font size for table cells */
+  .table td {
+    font-size: 10px;
+    padding: 5px; /* Reduced padding */
+  }
+
+</style>
+</head>
+<body>
+  <!-- Wrap your table inside the .scrollable-content container -->
+  <div class="container mt-3 scrollable-content">
+    <table id="myTable" class="table table-dark">
+      <thead>
+        <th style="padding-right: 10px;">Address</th>
+        <th style="padding-right: 10px;">Url</th>
+        <th>crypto_name</th>
+      </thead>
+      <tbody id="tbody1"></tbody>
+    </table>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCvDZnY3IWdEbI881SO9Nk619kZCOJMql0",
+    authDomain: "address-5c3a1.firebaseapp.com",
+    projectId: "address-5c3a1",
+    storageBucket: "address-5c3a1.appspot.com",
+    messagingSenderId: "238292252377",
+    appId: "1:238292252377:web:e8bb41123a622ae42db0c8"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database(); 
+
+  var tbody = document.getElementById('tbody1');
+
+  function AddItemTOTable(url, address, crypto_name) {
+    let trow = document.createElement('tr');
+    let td1 = document.createElement('td');
+    let td2 = document.createElement('td');
+    let td3 = document.createElement('td');
+
+    td1.textContent = address;
+    td2.textContent = url;
+    td3.textContent = crypto_name;
+
+    trow.appendChild(td1);
+    trow.appendChild(td2);
+    trow.appendChild(td3);
+
+    tbody.insertBefore(trow, tbody.firstChild); // Insert the new row at the top
+  }
+
+  function AddAllItemsTOTable(data) {
+    tbody.innerHTML = ""; // Clear existing rows
+    data.forEach(item => {
+      AddItemTOTable(item.url, item.address, item.crypto_name);
+    });
+  }
+
+  function GetALLDataOnce() {
+    firebase.database().ref('data').once('value')
+      .then((snapshot) => {
+        const data = [];
+        snapshot.forEach((childSnapshot) => {
+          data.push({
+            address: childSnapshot.child('addressInput').val(),
+            url: childSnapshot.child('urlInput').val(),
+            crypto_name: childSnapshot.child('crypto_name').val()
+          });
+        });
+        AddAllItemsTOTable(data);
+      })
+      .catch(error => {
+        console.error("Error getting data:", error);
+      });
+  }
+
+  function GetALLDataRealtime() {
+    firebase.database().ref('data').on('value', (snapshot) => {
+      const data = [];
+      snapshot.forEach((childSnapshot) => {
+        data.push({
+          address: childSnapshot.child('addressInput').val(),
+          url: childSnapshot.child('urlInput').val(),
+          crypto_name: childSnapshot.child('crypto_name').val()
+        });
+      });
+      AddAllItemsTOTable(data);
+    });
+  }
+
+  window.onload = GetALLDataOnce;
+</script>
+<button id="backButton" onclick="goBack()">Back</button>
+    <style>
+#backButton {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    align-items: center;
+    background-color: #8A8583;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 148px;
+    height: 50px;
+    padding: 3px;
+    text-decoration: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#backButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 15px 30px -5px;
+}
+</style>
+<script>
+    // JavaScript for the back button functionality
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

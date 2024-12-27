@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three Buttons</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("C:\\Users\\admin\\Downloads\\wp2406616.jpg"); /* Background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  /* Button 1 */
+  .square-button-1 {
+    display: inline-block;
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    background-color: #000000; /* Black color */
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px; /* Increase font size */
+    line-height: 200px; /* Center text vertically */
+    cursor: pointer;
+    border-radius: 5px; /* Optional: Add rounded corners */
+    margin-right: 40px; /* Add margin between buttons */
+  }
+
+  /* Hover effect for Button 1 */
+  .square-button-1:hover {
+    background-color: #333333; /* Darker shade of black on hover */
+  }
+
+  /* Button 2 */
+  .square-button-2 {
+    display: inline-block;
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    background-color: #000000; /* Black color */
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px; /* Increase font size */
+    line-height: 200px; /* Center text vertically */
+    cursor: pointer;
+    border-radius: 5px; /* Optional: Add rounded corners */
+    margin-right: 20px; /* Add margin between buttons */
+  }
+
+  /* Hover effect for Button 2 */
+  .square-button-2:hover {
+    background-color: #333333; /* Darker shade of black on hover */
+  }
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="button-container">
+  <button id="add-address" class="square-button-1">Add address</button>
+  <button id="show-all-addresses" class="square-button-2">Show all addresses</button>
+
+  <button id="add-address-button">Databases</button>
+  
+</div>
+
+<script>
+
+
+    // Add event listeners to each button
+    document.getElementById("add-address").addEventListener("click", function() {
+        window.location.href = "file:///C:/Users/Sairam%20Gudeli/Desktop/CBIT%20Final/CBIT/CBIT/Dark%20Web/dark%20web/Add%20address/index.html";
+    });
+
+    document.getElementById("show-all-addresses").addEventListener("click", function() {
+      window.location.href = "file:///C:/Users/Sairam%20Gudeli/Desktop/CBIT%20Final/CBIT/CBIT/Dark%20Web/dark%20web/Show%20all%20address/index.html";// Do something when this button is clicked
+    });
+
+    document.getElementById("add-address-button").addEventListener("click", function() {
+      window.location.href = "https://console.firebase.google.com/project/address-5c3a1/database/address-5c3a1-default-rtdb/data"; // Change example.com to your desired URL
+    });
+
+   
+</script>
+
+<style>
+  body {
+      background-color: #979797c5; /* Background color with alpha channel */
+  }
+ 
+</style>
+<button id="backButton" onclick="goBack()">Back</button>
+    <style>
+#backButton {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    align-items: center;
+    background-color: #8A8583;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 148px;
+    height: 50px;
+    padding: 3px;
+    text-decoration: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#backButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 15px 30px -5px;
+}
+#add-address-button {
+  position: absolute; /* Set position to absolute */
+  top: 10px; /* Adjust top position as needed */
+  right: 10px; /* Adjust right position as needed */
+  background-color: #333333; /* Dark color */
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 16px;
+  border-radius: 5px; /* Optional: Add rounded corners */
+  cursor: pointer;
+}
+
+/* Hover effect for add-address-button */
+#add-address-button:hover {
+  background-color: #555555; /* Darker shade on hover */
+
+}
+</style>
+<script>
+    // JavaScript for the back button functionality
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<footer>
+    <div class="container">
+      <div class="footer-info">
+        <h3>About Us</h3>
+        <p>We are dedicated to providing the latest news and updates in the world of cryptocurrency investigation and detection.</p>
+      </div>
+      <div class="footer-info">
+        <h3>Contact Us</h3>
+        <p>Email: info@cryptoinvestigation.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+      </div>
+    </div>
+  </footer>
+<style>footer {
+    background-color: #1a1a1d;
+    color: #ffffff;
+    padding: 50px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .footer-info {
+    width: 45%;
+  }
+  
+  .footer-info h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Animation for node connected like structure */
+  .node {
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  .node:before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .node:nth-child(odd):before {
+    animation: moveNode 2s infinite alternate;
+  }
+  
+  .node:nth-child(even):before {
+    animation: moveNodeReverse 2s infinite alternate;
+  }
+  
+  @keyframes moveNode {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      transform: translate(-50%, -100%);
+    }
+  }
+  
+  @keyframes moveNodeReverse {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      transform: translate(-50%, 0%);
+    }
+  }
+  </style>  

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        body, html {
+            font-family: 'Patua One', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+/* Include the Patua One font */
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+
+/* Apply Patua One to all elements */
+body {
+    font-family: 'Patua One', sans-serif;
+}
+
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            text-align: center;
+            padding-top: 50px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
+        <nav id="nav">
+            <div class="tab-container">
+                <input type="radio" name="tab" id="tab1" class="tab tab--1" />
+                <label id="tab_label" class="tab_label" for="tab1">Home</label>
+              
+                <input type="radio" name="tab" id="tab2" class="tab tab--2" />
+                <label id="tab_label" class="tab_label" for="tab2">Detection</label>
+              
+                <input type="radio" name="tab" id="tab3" class="tab tab--3" />
+                <label id="tab_label" class="tab_label" for="tab3">Investigation</label>
+              
+                <div class="indicator"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <section>
+            <video autoplay muted loop>
+                <source src="wallpaper.mp4" type="video/mp4">
+
+                <!-- Add other video formats if needed -->
+                Your browser does not support the video tag.
+            </video>
+            <div class="section-content">
+                <h2 id="page2-title">Tech AI</h2>
+                <h4 id="page2-subtitle">Cryptocurrency Flow and Investigation</h4>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Section 1 -->
+    <section>
+        <video autoplay muted loop>
+            <source src="wallpaper.mp4" type="video/mp4">
+            <!-- Add other video formats if needed -->
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2 id="Detection">Fraud Detection Techniques</h2>
+            <div class="cards-container">
+                <div class="card" id="Fraud Detection">
+                    <img src="Fraud Detection.png" alt="Card 1">
+                    <h3>Fraud Detection</h3>
+                    <p></p>
+                </div>
+                <div class="card" id="Dark Web">
+                    <img src="Dark Web.png" alt="Card 2">
+                    <h3>Dark Web</h3>
+                    <p></p>
+                </div>
+                <div class="card" id="Suspecious_Address">
+                    <img src="Suspicious Address.jpg" alt="Card 3">
+                    <h3>Suspicious Address</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section">
+        <video autoplay muted loop>
+            <source src="wallpaper.mp4" type="video/mp4">
+            <!-- Add other video formats if needed -->
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2 id="investigation">Investigation Techniques</h2>
+            <div class="cards-container">
+                <div class="card" id="Address Details">
+                    <img src="Address Details.png" alt="Card 1">
+                    <h3>Address Details</h3>
+                    <p></p>
+                </div>
+                <div class="card" id="Visualization">
+                    <img src="Visualization.jpg" alt="Card 2">
+                    <h3>Visualization</h3>
+                    <p></p>
+                </div>
+                <div class="card" id="K means clustering">
+                    <img src="K means clustering.png" alt="Card 3">
+                    <h3>K means clustering</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+              <h3 >About Us</h3>
+            <p>We are team Tech AI dedicated to build cutting-edge tools for cryptocurrency flow and investigation. Our mission is to provide innovative solutions that help Detecting and prevent Fraud in the Cryptocurrency . With our advanced techniques and technologies, we aim to empower Businesses and individuals to make informed decisions and protect their assets. </p>
+            </div>
+            <div class="footer-info">
+              <h3>Contact Us</h3>
+              <p>Email: techai0501@gmail.com</p>
+              <p>Phone: +91 7709547992</p>
+            </div>
+          </div>
+          
+          <script>
+             // Add click event listener to the button
+      document.getElementById("Fraud Detection").addEventListener("click", function() {
+        // Open the link in the re-box
+        window.open("http://127.0.0.1:5000/", "_self");
+     });
+  
+            // Add click event listener to the button
+            document.getElementById("Dark Web").addEventListener("click", function() {
+                // Open the link in the re-box
+                window.open("../Dark Web/dark web/index.html", "_self");
+             });
+
+          // Add click event listener to the button
+          document.getElementById("Suspecious_Address").addEventListener("click", function() {
+            // Open the link in the re-box
+            window.open("../Suspicious Address/index.html", "_self");
+         });
+
+      // Add click event listener to the button
+      document.getElementById("Address Details").addEventListener("click", function() {
+        // Open the link in the re-box
+        window.open("../Address Details/index.html", "_self");
+     });
+
+       // Add click event listener to the button
+       document.getElementById("Visualization").addEventListener("click", function() {
+        // Open the link in the re-box
+        window.open("../Visualization/index.html", "_self");
+     });
+
+     
+
+          </script>
+    </footer>
+</body>
+</html>
