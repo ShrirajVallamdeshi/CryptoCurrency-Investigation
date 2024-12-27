@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction History</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #0d0c0c;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #1b1a1a;
+        }
+        
+        .input {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            line-height: 28px;
+            padding: 0 1rem;
+            padding-left: 2.5rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            outline: none;
+            background-color: #f3f3f4;
+            color: #0d0c22;
+            transition: 0.3s ease;
+        }
+
+        button {
+            padding: 20px;
+            font-size: 16px;
+            background-color: #EED7A1;
+            border: none;
+            border-radius: 8px;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+        }
+
+        .input:focus,
+        input:hover {
+            outline: none;
+            border-color: #EED7A1;
+            background-color: #fff;
+            box-shadow: #EED7A1;
+        }
+
+        .icon {
+            position: absolute;
+            left: 1rem;
+            fill: #9e9ea7;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        #result {
+            border-radius: 8px;
+            padding: 20px;
+            background:#fdfeff;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: #ffffff;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            color: black;
+        }
+
+        th {
+            background-color: #979797c5;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        td {
+            background-color: #C5C6C7;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .icon {
+            position: absolute;
+            left: 1rem;
+            fill: #9e9ea7;
+            width: 1rem;
+            height: 1rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Transaction History In Details</h1>
+    <label for="address">Enter ETH Address:</label>
+    <div class="input">
+        <input type="text" id="address" placeholder="Address..." />
+        <span></span>
+    </div>
+    <button onclick="fetchTransactionHistory()">Submit</button>
+    <div id="result"></div>
+    <button onclick="downloadTableAsCSV()">Download CSV</button>
+
+    <script>
+        async function get_eth_transaction_history(address) {
+            const api_key = '1KQ2ETIZF1M4864CKFY8IU539CIH1SXZ28';
+            const url = `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&apikey=${api_key}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.result;
+        }
+
+        function weiToEther(wei) {
+            return wei / 1e18;
+        }
+
+        async function fetchTransactionHistory() {
+            const address = document.getElementById('address').value.trim();
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+
+            try {
+                if (address.startsWith('0x') && address.length === 42) {
+                    const eth_transactions = await get_eth_transaction_history(address);
+                    if (eth_transactions.length > 0) {
+                        const table = document.createElement('table');
+                        table.id = "mytable";
+                        table.innerHTML = `
+                            <tr>
+                                <th>Block Number</th>
+                                <th>Timestamp</th>
+                                <th>Value</th>
+                                <th>Gas Fee</th>
+                                <th>From</th>
+                                <th>To</th>
+                            </tr>
+                        `;
+                        eth_transactions.forEach(tx => {
+                            const row = table.insertRow();
+                            row.innerHTML = `
+                                <td>${tx.blockNumber}</td>
+                                <td>${new Date(tx.timeStamp * 1000)}</td>
+                                <td>${weiToEther(tx.value)} ETH</td>
+                                <td>${weiToEther(tx.gasPrice * tx.gasUsed)} ETH</td>
+                                <td>${tx.from}</td>
+                                <td>${tx.to}</td>
+                            `;
+                        });
+                        resultDiv.appendChild(table);
+                    } else {
+                        resultDiv.textContent = "No transaction history found for the provided ETH address.";
+                    }
+                } else {
+                    resultDiv.textContent = "Invalid address format or unsupported cryptocurrency.";
+                }
+            } catch (error) {
+                resultDiv.textContent = "Error fetching transaction history: " + error.message;
+                console.error(error);
+            }
+        }
+
+        function downloadTableAsCSV() {
+            const table = document.getElementById("mytable");
+            const rows = table.querySelectorAll("tr");
+            let csvContent = "data:text/csv;charset=utf-8,";
+
+            rows.forEach(function(row) {
+                const rowData = [];
+                const cols = row.querySelectorAll("td, th");
+                cols.forEach(function(col) {
+                    rowData.push(col.innerText);
+                });
+                csvContent += rowData.join(",") + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "transaction_history.csv");
+            document.body.appendChild(link);
+            link.click();
+        }
+    </script>
+    <button id="backButton" onclick="goBack()">Back</button>
+    <style>
+#backButton {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    align-items: center;
+    background-color: #8A8583;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 148px;
+    height: 50px;
+    padding: 3px;
+    text-decoration: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#backButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 15px 30px -5px;
+}
+</style>
+<script>
+    // JavaScript for the back button functionality
+    function goBack() {
+        window.history.back();
+    }
+</script
+</body>
+</html>
