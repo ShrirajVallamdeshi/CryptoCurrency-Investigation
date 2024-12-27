@@ -1,0 +1,15 @@
+/* CSS for customizing hover box */
+.vis-network-tooltip {
+    color: #d5dc0a; /* Text color */
+    background-color: #d5dc0a; /* Background color */
+    border: none; /* No border */
+    border-radius: 5px; /* Border radius */
+    padding: 10px; /* Padding */
+}
+
+/* CSS for styling the network visualization */
+#mynetwork {
+  width: 1000px;
+  height: 600px;
+  border: 1px solid lightgray;
+}

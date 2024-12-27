@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Graph Visualization</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style type="text/css">
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #979797c5;
+    }
+
+    #buttonsContainer {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      margin-left: -770px;
+    }
+
+    #mynetwork {
+      padding-top: 20px;
+      width: 1000px;
+      height: 580px;
+      border: 1px solid lightgray;
+      background-color: white; /* Set the background color */
+    }
+
+    .button {
+      background-color: #F7EFD2;
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-right: 10px;
+      padding-bottom: 10;
+      font-size: 20px;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <div id="buttonsContainer">
+    <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+    <label for="csvFileInput" class="button">Upload CSV File</label>
+    <button class="button" onclick="loadGraph()">Load Graph</button>
+  </div>
+  <div id="mynetwork"></div>
+
+  <script type="text/javascript" src="script.js"></script>
+  <button id="backButton" onclick="goBack()">Back</button>
+    <style>
+#backButton {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    align-items: center;
+    background-color: #8A8583;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 148px;
+    height: 50px;
+    padding: 3px;
+    text-decoration: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+#backButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 15px 30px -5px;
+}
+</style>
+<script>
+    // JavaScript for the back button functionality
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
